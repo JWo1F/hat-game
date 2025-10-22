@@ -1,3 +1,5 @@
+import { render } from "./templates";
+
 export class Router {
   constructor() {
     this.routes = new Map();
@@ -21,11 +23,8 @@ export class Router {
 
   async visit(path) {
     const handler = this.routes.get(path);
+    const content = await handler();
 
-    if (handler) {
-      document.body.innerHTML = await handler();
-    } else {
-      throw new Error(`No route found for path: ${path}`);
-    }
+    document.body.innerHTML = await render('layout', { yield: content });
   }
 }

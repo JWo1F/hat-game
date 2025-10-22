@@ -1,0 +1,3 @@
+<div data-controller="leader">
+  <div data-leader-target="score"></div>
+</div>

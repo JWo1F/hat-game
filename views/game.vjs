@@ -1,0 +1,7 @@
+<div class="flex items-center justify-center w-full h-full" data-controller="game" data-game-words-value="<%= JSON.stringify(words) %>">
+  <div>
+    <h1 class="text-4xl font-bold mb-8" data-game-target="word"></h1>
+    <button class="btn" data-action="game#success">Правильно</button>
+    <button class="btn" data-action="game#fail">Ошибка</button>
+  </div>
+</div>
