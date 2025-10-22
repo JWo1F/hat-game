@@ -1,0 +1,3 @@
+<div>Hello, <%= name %>! Welcome to our website.</div>
+<div data-controller="hello" data-hello-target="output" data-action="click->hello#add"></div>
+<a href="/second">About Us</a>
