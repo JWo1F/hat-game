@@ -10,9 +10,9 @@ for (const path in templates) {
   const compiled = await vjs.compile(templateText);
   const name = path.replace('../views/', '').replace('.vjs', '');
 
-  renderer[name] = async (params) => vjs.render(compiled, params);
+  renderer[name] = async (params, content) => vjs.render(compiled, params, content);
 }
 
-export const render = (name, params = {}) => {
-  return renderer[name](params);
+export const render = (name, params = {}, content) => {
+  return renderer[name](params, content);
 };

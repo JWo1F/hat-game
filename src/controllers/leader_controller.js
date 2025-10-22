@@ -1,11 +1,13 @@
 import {Controller} from "@hotwired/stimulus";
+import {getItem} from "../store";
 
 export default class extends Controller {
   static targets = ['score'];
 
   connect() {
-    const scores = this.application.getControllerForElementAndIdentifier(document.body, 'scores');
+    const score = getItem('score');
+    const words = getItem('words').length;
 
-    this.scoreTarget.textContent = `Your score: ${scores.score}`;
+    this.scoreTarget.textContent = `Your score: ${score} of ${words}`;
   }
 }

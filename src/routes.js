@@ -1,6 +1,5 @@
 import { Router } from "./router";
 import { render } from "./templates";
-import { getWordsByCategories } from "./words";
 
 export const routes = new Router();
 
@@ -9,9 +8,7 @@ routes.addRoute('', () => {
 });
 
 routes.addRoute('game', () => {
-  const words = getWordsByCategories(['general'], 10);
-
-  return render('game', { words });
+  return render('game');
 });
 
 routes.addRoute('score', () => {

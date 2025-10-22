@@ -25,6 +25,6 @@ export class Router {
     const handler = this.routes.get(path);
     const content = await handler();
 
-    document.body.innerHTML = await render('layout', { yield: content });
+    document.body.innerHTML = await render('layout', {}, content);
   }
 }
