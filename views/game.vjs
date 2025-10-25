@@ -1,5 +1,8 @@
-<div class="flex items-center justify-center w-full h-full" data-controller="game">
-  <div>
+<div class="flex items-center justify-center p-4 h-screen w-screen" data-controller="game">
+  <div class="text-center">
+    <div>Время: <span data-controller="timer" data-timer-end-time-value="<%= $.game.endTime * 1 %>"></span></div>
+    <div>Игрок <span data-game-target="player"></span></div>
+    <div>Вопрос <span data-game-target="num"></span> из <span data-game-target="total"></span></div>
     <h1 class="text-4xl font-bold mb-8" data-game-target="word"></h1>
     <button class="btn" data-action="game#success">Правильно</button>
     <button class="btn" data-action="game#fail">Ошибка</button>

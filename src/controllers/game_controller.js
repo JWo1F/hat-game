@@ -1,67 +1,60 @@
 import { Controller } from "@hotwired/stimulus";
 import { routes } from "../routes";
 import { state } from "../store";
-import { getWordsByCategories } from "../words";
+import {Player, Team} from "../team.js";
 
 export default class extends Controller {
-  static targets = ['word'];
+  static targets = ['word', 'num', 'total', 'player'];
 
   connect() {
-    state.clear();
+    this.abortController = new AbortController();
 
-    this.index = 0;
-    this.words = getWordsByCategories(['general'], 10);
+    state.game.addEventListener(
+      'timeout',
+      () => routes.visit('round'),
+      { signal: this.abortController.signal }
+    );
 
-    this.wordTarget.textContent = this.words[this.index];
+    state.game.addEventListener(
+      'finish',
+      () => routes.visit('score'),
+      { signal: this.abortController.signal }
+    );
+
+    this.wordTarget.textContent = state.game.word;
+    this.numTarget.textContent = state.game.answered.size;
+    this.totalTarget.textContent = state.game.words.length;
+    this.playerTarget.textContent = state.game.player.name;
+  }
+
+  disconnect() {
+    this.abortController.abort();
   }
 
   success() {
-    this.score += 1;
-    this.next();
+    this.next(true);
   }
 
   fail() {
-    this.next();
+    this.next(false);
   }
 
-  next() {
-    if (this.index < this.words.length - 1) {
-      this.index += 1;
-      this.wordTarget.textContent = this.words[this.index];
-    } else {
-      routes.visit('score');
-    }
-  }
-
-  get words() {
-    return state.words;
-  }
-
-  set words(value) {
-    state.words = value;
-  }
-
-  get score() {
-    const all = state.score;
-    const fields = {};
-
-    for (const team of this.teams) {
-      fields[team] = {
-        get() {
-          return all?.[team] ?? 0;
-        },
-        set(v) {
-          const updated = { ...(all ?? {}) };
-          updated[team] = v;
-          state.score = updated;
-        }
-      };
-    }
-
-    return Object.create(Object.prototype, fields);
+  next(success) {
+    state.game.answer(success);
+    this.numTarget.textContent = state.game.answered.size;
+    this.wordTarget.textContent = state.game.word;
   }
 
   get teams() {
-    return ['Team A', 'Team B'];
+    return [
+      new Team('Red', [
+        new Player('John'),
+        new Player('Jane'),
+      ]),
+      new Team('Blue', [
+        new Player('Alice'),
+        new Player('Bob'),
+      ]),
+    ];
   }
 }

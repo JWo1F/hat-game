@@ -1,4 +1,4 @@
-import { Vjs } from "vjs";
+import {Vjs} from "vjs";
 
 const templates = import.meta.glob('../views/**/*.vjs', { as: 'raw', eager: true });
 const vjs = new Vjs();
@@ -10,7 +10,9 @@ for (const path in templates) {
   const compiled = await vjs.compile(templateText);
   const name = path.replace('../views/', '').replace('.vjs', '');
 
-  renderer[name] = async (params, content) => vjs.render(compiled, params, content);
+  renderer[name] = async (params, content) => {
+    return await vjs.render(compiled, params, content);
+  };
 }
 
 export const render = (name, params = {}, content) => {
