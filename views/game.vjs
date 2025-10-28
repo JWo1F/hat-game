@@ -1,5 +1,5 @@
-<div class="w-screen h-screen flex flex-col" data-controller="game">
-    <div class="flex mb-4 p-8">
+<div class="h-screen flex flex-col" data-controller="game">
+    <div class="flex-none flex mb-4 p-8">
         <div data-game-target="player"></div>
         <div class="mx-auto">
             Вопрос <span data-game-target="num"></span> из <span data-game-target="total"></span>
@@ -9,14 +9,14 @@
             <span data-controller="timer" data-timer-end-time-value="<%= $.game.endTime * 1 %>"></span>
         </div>
     </div>
+
     <div class="text-center my-auto px-4">
         <div class="inline-block">
-            <div class="border-b-4 border-dashed border-b-gray-300"></div>
-            <h1 class="text-4xl font-bold inline-block my-4" data-game-target="word"></h1>
-            <div class="border-b-4 border-dashed border-b-gray-300"></div>
+            <h1 class="border-wave text-4xl font-bold inline-block my-4" data-game-target="word"></h1>
         </div>
     </div>
-    <div class="p-8 grid grid-cols-2 gap-4 text-lg text-white text-bold">
+
+    <div class="flex-none p-8 grid grid-cols-2 gap-4 text-lg text-white text-bold">
         <button class="border-3 border-red-900 h-40 bg-red-500 rounded-full" data-action="game#fail">Дальше</button>
         <button class="border-3 border-green-900 h-40 bg-green-500 rounded-full" data-action="game#success">Правильно</button>
     </div>

@@ -21,6 +21,27 @@
   .btn {
     @apply bg-white px-4 py-2 rounded-full shadow border-6 border-double border-black block text-center;
   }
+
+  .border-wave {
+    @apply relative py-6;
+
+    &::before,
+    &::after {
+      @apply absolute left-0 right-0 h-5;
+      content: '';
+      background-image: url('/images/wave-border.svg');
+      background-size: 100% 100%;
+      background-repeat: repeat-x;
+    }
+
+    &::before {
+      @apply top-0;
+    }
+
+    &::after {
+      @apply bottom-0;
+    }
+  }
 }
 
 ::view-transition-old(root) {

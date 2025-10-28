@@ -1,9 +1,7 @@
-<div class="p-8 flex flex-col w-screen h-screen">
-    <div>
-        <a href="/settings">
-            <img src="images/settings.svg" alt="Settings" width="50" height="50" class="absolute top-4 right-4 hover:scale-105 transition-transform">
-        </a>
-    </div>
+<div class="p-8 flex flex-col h-screen">
+    <a href="/settings" class="absolute top-4 right-4 hover:scale-105 transition-transform">
+        <img src="images/settings.svg" alt="Settings" width="50" height="50">
+    </a>
 
     <div class="text-center my-auto">
         <img src="images/hat.svg" alt="" width="300" height="300" class="inline-block">

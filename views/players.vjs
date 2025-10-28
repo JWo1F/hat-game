@@ -1,5 +1,5 @@
-<div class="w-screen h-screen flex flex-col" data-controller="vfield" data-vfield-length-value="<%= $.team.players.length %>">
-    <header class="shrink-0 flex items-center justify-between p-8">
+<form action="/players" method="POST" class="w-screen h-screen flex flex-col" data-controller="vfield" data-vfield-length-value="<%= $.team.players.length %>">
+    <header class="flex-none flex items-center justify-between p-8">
         <h1 class="text-4xl font-bold"><%= $.team.name %></h1>
         <div class="flex gap-2">
             <button class="p-4 block" type="button" data-action="vfield#add">
@@ -11,26 +11,25 @@
         </div>
     </header>
 
-    <form action="/players" method="POST" class="grow flex flex-col">
-        <div class="grow shrink-0">
-            <% const field = (name, index) => { %>
-                <div data-vfield-index="<%= index %>">
-                    <input type="text" name="player" value="<%= name %>" class="block w-full p-4 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus />
-                </div>
-            <% } %>
-
-            <template data-vfield-target="template">
-                <% field('', '$TEMPLATE$') %>
-            </template>
-
-            <div class="p-8" data-vfield-target="output">
-                <% $.team.players.forEach((player, index) => field(player, index)) %>
+    <div class="flex-1">
+        <% const field = (name, index) => { %>
+            <div data-vfield-index="<%= index %>">
+                <input type="text" name="player" value="<%= name %>" class="block w-full p-4 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus />
             </div>
+        <% } %>
+
+        <template data-vfield-target="template">
+            <% field('', '$TEMPLATE$') %>
+        </template>
+
+        <div class="p-8" data-vfield-target="output">
+            <% $.team.players.forEach((player, index) => field(player, index)) %>
         </div>
-        <div class="p-8 text-center">
-            <button type="submit">
-                <img src="images/next.svg" alt="Next" width="100" height="100" class="hover:scale-105 transition-transform">
-            </button>
-        </div>
-    </form>
-</div>
+    </div>
+
+    <div class="flex-none p-8 text-center">
+        <button type="submit">
+            <img src="images/next.svg" alt="Next" width="100" height="100" class="hover:scale-105 transition-transform">
+        </button>
+    </div>
+</form>
