@@ -12,19 +12,56 @@ export class Router {
 
         e.preventDefault();
 
-        this.visit(href.slice(1));
+        this.visit(href.slice(1), {
+          method: 'GET',
+          body: null
+        });
       }
     });
+
+    document.body.addEventListener('submit', (e) => {
+      const form = e.target.closest('form[action]');
+
+      if (form) {
+        const action = form.getAttribute('action');
+
+        e.preventDefault();
+
+        this.visit(action.slice(1), {
+          method: (form.method || 'GET').toUpperCase(),
+          body: new FormData(form),
+        });
+      }
+    });
+  }
+
+  redirect(location) {
+    return {
+      type: 'redirect',
+      location,
+    };
   }
 
   addRoute(path, handler) {
     this.routes.set(path, handler);
   }
 
-  async visit(path) {
+  async visit(path, options) {
     const handler = this.routes.get(path);
-    const content = await handler();
+    console.log(handler);
+    const content = await handler(options);
+
+    if (content.type === 'redirect') {
+      return this.visit(content.location, { method: 'GET', body: null });
+    }
 
     document.body.innerHTML = await render('layout', {}, content);
+
+    const elems = document.body.querySelectorAll('[autofocus]');
+    const last = elems[elems.length - 1];
+
+    if (last) {
+      last.focus();
+    }
   }
 }

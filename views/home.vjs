@@ -1,6 +1,15 @@
-<div class="w-full h-full bg-blue-300 flex items-center justify-center">
-  <div class="space-y-4">
-    <h1 class="text-4xl font-bold text-white text-center">Шляпа</h1>
-    <a href="/start" class="btn w-full">Начать</a>
-  </div>
+<div class="p-8 flex flex-col w-screen h-screen">
+    <div>
+        <a href="/settings">
+            <img src="/assets/images/settings.svg" alt="Settings" width="50" height="50" class="absolute top-4 right-4 hover:scale-105 transition-transform">
+        </a>
+    </div>
+
+    <div class="text-center my-auto">
+        <img src="/assets/images/hat.svg" alt="" width="300" height="300" class="inline-block">
+    </div>
+
+    <a href="/teams" class="block">
+        <img src="/assets/images/play.svg" alt="Play" width="100" height="100" class="block mx-auto my-4 hover:scale-105 transition-transform">
+    </a>
 </div>

@@ -1,7 +1,23 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @layer components {
+  body {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    background-color: #f9f9f9;
+    color: #333333;
+  }
+
   .btn {
-    @apply text-center inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600;
+    background-image: url(/assets/images/button.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 255px;
   }
 }

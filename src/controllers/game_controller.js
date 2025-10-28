@@ -11,7 +11,7 @@ export default class extends Controller {
 
     state.game.addEventListener(
       'timeout',
-      () => routes.visit('round'),
+      () => routes.visit('update'),
       { signal: this.abortController.signal }
     );
 

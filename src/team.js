@@ -24,6 +24,10 @@ export class Player {
     this.#score.at(-1).add(word);
   }
 
+  delete(word) {
+    this.#score.at(-1).delete(word);
+  }
+
   totalScore() {
     return this.#score.reduce((total, round) => total + round.size, 0);
   }

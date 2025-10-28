@@ -1,5 +1,6 @@
 import {Controller} from "@hotwired/stimulus";
 import { formatDistanceToNowStrict } from "date-fns";
+import {duration} from "../utils.js";
 
 export default class extends Controller {
   static values = {
@@ -13,7 +14,7 @@ export default class extends Controller {
 
   #tick() {
     if (this.ended) return;
-    this.element.innerText = formatDistanceToNowStrict(new Date(this.endTimeValue));
+    this.element.innerText = duration(new Date(), new Date(this.endTimeValue));
 
     setTimeout(this.#tick.bind(this), 1000);
   }

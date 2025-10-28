@@ -11,6 +11,7 @@ export class Game extends EventTarget {
     this.timeout = timeout;
     this.players = this.#preparePlayers();
     this.playerIndex = 0;
+    this.showedIndexes = new Set([this.wordIndex]);
 
     this.players.forEach((player) => player.nextRound());
   }
@@ -26,6 +27,8 @@ export class Game extends EventTarget {
       if (!finished) {
         this.dispatchEvent(new CustomEvent('timeout'));
       }
+
+      this.showedIndexes = new Set([this.wordIndex]);
     }, this.timeout);
   }
 
@@ -36,6 +39,7 @@ export class Game extends EventTarget {
     }
 
     this.#nextWordIndex();
+    this.showedIndexes.add(this.wordIndex);
   }
 
   get word() {
@@ -44,6 +48,14 @@ export class Game extends EventTarget {
 
   get player() {
     return this.players[this.playerIndex];
+  }
+
+  get team() {
+    return this.teams.find(t => t.players.includes(this.player));
+  }
+
+  get teammate() {
+    return this.team.players.find(p => p !== this.player);
   }
 
   #nextWordIndex() {
@@ -66,17 +78,14 @@ export class Game extends EventTarget {
   }
 
   #preparePlayers() {
-    const players = this.teams.flatMap(team => team.players);
-    const a = [], b = [];
+    const a = []
+    const b = [];
 
-    players.forEach((player, index) => {
-      if (index % 2 === 0) {
-        a.push(player);
-      } else {
-        b.push(player);
-      }
+    shuffle(this.teams).forEach(team => {
+      a.push(team.players[0]);
+      b.push(team.players[1]);
     });
 
-    return [...shuffle(a), ...shuffle(b)];
+    return [...a, ...b];
   }
 }
