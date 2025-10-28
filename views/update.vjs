@@ -5,8 +5,8 @@
       <% $.game.showedIndexes.forEach((index) => { %>
         <div class="flex text-white rounded-md p-4 mb-2 items-center justify-between" data-controller="update" data-update-word-value="<%= $.game.words[index] %>" data-action="click->update#change">
           <div><%= $.game.words[index] %></div>
-          <img src="/assets/images/check.svg" width="24px" height="24px" class="hidden" data-update-target="check">
-          <img src="/assets/images/uncheck.svg" width="24px" height="24px" class="hidden" data-update-target="uncheck">
+          <img src="images/check.svg" width="24px" height="24px" class="hidden" data-update-target="check">
+          <img src="images/uncheck.svg" width="24px" height="24px" class="hidden" data-update-target="uncheck">
         </div>
       <% }) %>
     </div>

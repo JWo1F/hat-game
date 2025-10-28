@@ -58,7 +58,9 @@ export class Router {
     const next = await render('layout', {}, content);
 
     this.#replace(next);
+  }
 
+  #autofocus() {
     const elems = document.body.querySelectorAll('[autofocus]');
     const last = elems[elems.length - 1];
 
@@ -70,17 +72,20 @@ export class Router {
   #replace(html) {
     if (!this.visitting) {
       document.body.innerHTML = html;
+      this.#autofocus();
       this.visitting = true;
       return;
     }
 
     if (!document.startViewTransition) {
       document.body.innerHTML = html;
+      this.#autofocus();
       return;
     }
 
     document.startViewTransition(() => {
       document.body.innerHTML = html;
+      this.#autofocus();
     });
   }
 }

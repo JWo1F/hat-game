@@ -5,7 +5,7 @@
             Вопрос <span data-game-target="num"></span> из <span data-game-target="total"></span>
         </div>
         <div class="flex gap-2 justify-center">
-            <img src="/assets/images/time.svg" width="16" height="16">
+            <img src="images/time.svg" width="16" height="16">
             <span data-controller="timer" data-timer-end-time-value="<%= $.game.endTime * 1 %>"></span>
         </div>
     </div>
