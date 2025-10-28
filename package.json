@@ -19,6 +19,6 @@
     "stimulus-vite-helpers": "^3.1.0",
     "tailwindcss": "^4.1.15",
     "vite": "^7.1.11",
-    "vjs": "git+https://github.com/JWo1F/view-js.git#e8f22d4"
+    "vjs": "github:JWo1F/view-js#e8f22d4"
   }
 }
