@@ -30,12 +30,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      - run: npm install -g corepack@0.20.0
+      - run: corepack enable
       - name: Set up Node
         uses: actions/setup-node@v5
         with:
           node-version: lts/*
+          cache: pnpm
       - name: Install dependencies
-        run: corepack enable && pnpm i
+        run: pnpm i
       - name: Build
         run: pnpm run build
       - name: Setup Pages
