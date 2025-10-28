@@ -12,8 +12,6 @@
       <% }) %>
     </div>
   <% }) %>
-</div>
 
-<div class="text-center">
-    <a class="btn" href="/">Начать сначала</a>
+  <a class="btn" href="/">Начать сначала</a>
 </div>
