@@ -2,6 +2,42 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+::view-transition-old(root) {
+  animation: slide-out-left 0.3s ease-in-out;
+}
+
+/* Новая страница выезжает справа */
+::view-transition-new(root) {
+  animation: slide-in-right 0.3s ease-in-out;
+}
+
+/* Анимация для старой страницы */
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Анимация для новой страницы */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Опционально: убираем default fade эффект */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-timing-function: ease-in-out;
+  mix-blend-mode: normal;
+}
+
 @layer components {
   body {
     font-family: "Roboto", sans-serif;

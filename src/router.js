@@ -55,7 +55,9 @@ export class Router {
       return this.visit(content.location, { method: 'GET', body: null });
     }
 
-    document.body.innerHTML = await render('layout', {}, content);
+    const next = await render('layout', {}, content);
+
+    this.#replace(next);
 
     const elems = document.body.querySelectorAll('[autofocus]');
     const last = elems[elems.length - 1];
@@ -63,5 +65,22 @@ export class Router {
     if (last) {
       last.focus();
     }
+  }
+
+  #replace(html) {
+    if (!this.visitting) {
+      document.body.innerHTML = html;
+      this.visitting = true;
+      return;
+    }
+
+    if (!document.startViewTransition) {
+      document.body.innerHTML = html;
+      return;
+    }
+
+    document.startViewTransition(() => {
+      document.body.innerHTML = html;
+    });
   }
 }
