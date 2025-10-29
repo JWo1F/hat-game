@@ -1,4 +1,4 @@
-<div class="flex flex-col p-8 h-screen text-center">
+<div class="flex flex-col p-8 h-dvh text-center">
     <div class="my-auto text-center space-y-4">
         <h2 class="text-3xl font-bold"><%= $.game.team.name %></h2>
         <div>объясняет</div>
