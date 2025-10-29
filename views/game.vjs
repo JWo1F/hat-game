@@ -16,8 +16,12 @@
         </div>
     </div>
 
-    <div class="flex-none p-8 grid grid-cols-2 gap-4 text-lg text-white text-bold">
-        <button class="border-3 border-red-900 h-40 bg-red-500 rounded-full" data-action="game#fail">Дальше</button>
-        <button class="border-3 border-green-900 h-40 bg-green-500 rounded-full" data-action="game#success">Правильно</button>
+    <div class="flex-none p-8 flex gap-4 justify-around text-lg text-white text-bold">
+        <button data-action="game#fail">
+            <img src="images/fail.svg" alt="Fail" class="aspect-square h-32">
+        </button>
+        <button data-action="game#success">
+            <img src="images/success.svg" alt="Success" class="aspect-square h-32">
+        </button>
     </div>
 </div>
