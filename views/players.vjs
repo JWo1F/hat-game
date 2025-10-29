@@ -14,7 +14,7 @@
     <div class="flex-1">
         <% const field = (name, index) => { %>
             <div data-vfield-index="<%= index %>">
-                <input type="text" name="player" value="<%= name %>" class="input block" autofocus />
+                <input type="text" name="player" value="<%= name %>" class="input block" />
             </div>
         <% } %>
 
