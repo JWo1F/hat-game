@@ -1,4 +1,4 @@
-<div class="h-dvh flex flex-col" data-controller="game">
+<div class="h-lvh flex flex-col" data-controller="game">
     <div class="flex-none flex mb-4 p-8">
         <div data-game-target="player"></div>
         <div class="mx-auto">
