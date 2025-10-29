@@ -1,6 +1,10 @@
-import { escape as $escape } from "vjs";
+import { escape } from "vjs";
 
-const templates = import.meta.glob('../views/**/*.vjs', { eager: true });
+const templates = import.meta.glob('../views/**/*.vjs', {
+  eager: true,
+  import: 'default',
+});
+
 const renderer = {};
 
 for (const path in templates) {
@@ -12,10 +16,7 @@ for (const path in templates) {
   renderer[name] = async (params, content) => {
     let output = '';
 
-    const append = (str) => output += str;
-    const escape = (str) => append($escape(str));
-
-    template.default(params, append, escape, content);
+    template(params, (str) => { output += str }, escape, content);
 
     return output;
   };
