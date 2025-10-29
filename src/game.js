@@ -84,16 +84,26 @@ export class Game extends EventTarget {
   }
 
   #preparePlayers() {
-    const a = []
-    const b = [];
+    const players = [];
+    let maxPlayers = 0;
 
-    shuffle(this.teams).forEach(team => {
-      const [one, two] = shuffle(team.players);
+    for (const team of shuffle(this.teams)) {
+      const shuffled = shuffle(team.players);
+      maxPlayers = Math.max(maxPlayers, shuffled.length);
 
-      a.push(one);
-      b.push(two);
-    });
+      players.push(shuffled);
+    }
 
-    return [...a, ...b];
+    const output = [];
+
+    for (let i = 0; i < maxPlayers; i++) {
+      for (const teamPlayers of players) {
+        if (i < teamPlayers.length) {
+          output.push(teamPlayers[i]);
+        }
+      }
+    }
+
+    return output;
   }
 }
