@@ -28,11 +28,15 @@ export class Player {
     this.#score.at(-1).delete(word);
   }
 
-  totalScore() {
+  get words() {
+    return this.#score.flatMap(round => Array.from(round));
+  }
+
+  get score() {
     return this.#score.reduce((total, round) => total + round.size, 0);
   }
 
-  get words() {
-    return this.#score.flatMap(round => Array.from(round));
+  get rounds() {
+    return this.#score;
   }
 }

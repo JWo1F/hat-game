@@ -58,6 +58,12 @@ export class Game extends EventTarget {
     return this.team.players.find(p => p !== this.player);
   }
 
+  get bestPlayer() {
+    return this.players.reduce((best, player) => {
+      return (player.score > best.score) ? player : best;
+    }, this.players[0]);
+  }
+
   #nextWordIndex() {
     if (this.words.length <= this.answered.size) {
       this.dispatchEvent(new CustomEvent('finish'));
@@ -82,8 +88,10 @@ export class Game extends EventTarget {
     const b = [];
 
     shuffle(this.teams).forEach(team => {
-      a.push(team.players[0]);
-      b.push(team.players[1]);
+      const [one, two] = shuffle(team.players);
+
+      a.push(one);
+      b.push(two);
     });
 
     return [...a, ...b];

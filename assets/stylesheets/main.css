@@ -23,10 +23,22 @@
   }
 
   .input {
-    @apply ring-2 ring-gray-500 rounded p-4 w-full;
+    @apply ring-2 ring-gray-500 rounded p-4 w-full bg-white;
 
     &:focus {
       @apply outline-none ring-3 ring-gray-900;
+    }
+  }
+
+  .table-default {
+    @apply w-full border-collapse;
+
+    th, td {
+      @apply border border-gray-300 p-2 text-left;
+    }
+
+    th {
+      @apply bg-gray-200 font-semibold;
     }
   }
 
