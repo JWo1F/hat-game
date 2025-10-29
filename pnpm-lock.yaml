@@ -20,9 +20,6 @@ importers:
       fast-shuffle:
         specifier: ^6.1.1
         version: 6.1.1
-      html-escape:
-        specifier: ^2.0.0
-        version: 2.0.0
       stimulus-vite-helpers:
         specifier: ^3.1.0
         version: 3.1.0
@@ -33,8 +30,8 @@ importers:
         specifier: ^7.1.11
         version: 7.1.11(jiti@2.6.1)(lightningcss@1.30.2)
       vjs:
-        specifier: github:JWo1F/view-js#e8f22d4
-        version: https://codeload.github.com/JWo1F/view-js/tar.gz/e8f22d4
+        specifier: github:JWo1F/view-js#eba3100ad891bb42e253a76d9278e665a7d89e11
+        version: https://codeload.github.com/JWo1F/view-js/tar.gz/eba3100ad891bb42e253a76d9278e665a7d89e11
 
 packages:
 
@@ -620,8 +617,8 @@ packages:
       yaml:
         optional: true
 
-  vjs@https://codeload.github.com/JWo1F/view-js/tar.gz/e8f22d4:
-    resolution: {tarball: https://codeload.github.com/JWo1F/view-js/tar.gz/e8f22d4}
+  vjs@https://codeload.github.com/JWo1F/view-js/tar.gz/eba3100ad891bb42e253a76d9278e665a7d89e11:
+    resolution: {tarball: https://codeload.github.com/JWo1F/view-js/tar.gz/eba3100ad891bb42e253a76d9278e665a7d89e11}
     version: 1.0.0
 
 snapshots:
@@ -1044,6 +1041,6 @@ snapshots:
       jiti: 2.6.1
       lightningcss: 1.30.2
 
-  vjs@https://codeload.github.com/JWo1F/view-js/tar.gz/e8f22d4:
+  vjs@https://codeload.github.com/JWo1F/view-js/tar.gz/eba3100ad891bb42e253a76d9278e665a7d89e11:
     dependencies:
       html-escape: 2.0.0

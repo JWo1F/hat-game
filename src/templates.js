@@ -1,4 +1,4 @@
-import $escape from 'html-escape';
+import { escape as $escape } from "vjs";
 
 const templates = import.meta.glob('../views/**/*.vjs', { eager: true });
 const renderer = {};
