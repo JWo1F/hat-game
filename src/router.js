@@ -66,6 +66,7 @@ export class Router {
 
     if (last) {
       last.focus();
+      last.selectionStart = last.selectionEnd = last.value.length;
     }
   }
 

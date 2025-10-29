@@ -1,4 +1,4 @@
-<form action="/teams" method="POST" class="h-screen flex flex-col" data-controller="vfield" data-vfield-length-value="<%= $.settings.teams?.length ?? 0 %>">
+<form action="/teams" method="POST" class="h-screen flex flex-col" data-controller="vfield" data-vfield-length-value="<%= $.settings.teams?.length ?? 0 %>" data-vfield-type-value="teams">
     <header class="flex-none flex items-center justify-between p-8">
         <h1 class="text-4xl font-bold">Команды</h1>
         <div class="flex gap-2">
@@ -19,7 +19,7 @@
         <% } %>
 
         <template data-vfield-target="template">
-            <% field('', '$TEMPLATE$') %>
+            <% field('$VALUE$', '$TEMPLATE$') %>
         </template>
 
         <div class="p-8" data-vfield-target="output">

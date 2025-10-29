@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { routes } from "../routes";
 import { state } from "../store";
-import {Player, Team} from "../team.js";
+import { Player, Team } from "../team.js";
 
 export default class extends Controller {
   static targets = ['word', 'num', 'total', 'player'];

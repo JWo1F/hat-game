@@ -1,8 +1,25 @@
-import {Controller} from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus";
+import { shuffle } from "fast-shuffle";
+
+const getText = (() => {
+  const texts = import.meta.glob('../../assets/texts/*.txt', { as: 'raw', eager: true });
+
+  for (const key in texts) {
+    texts[key] = shuffle(texts[key].split('\n'))
+      .map(line => line.trim())
+      .filter(line => line.length > 0);
+  }
+
+  return (name) => {
+    const filePath = `../../assets/texts/${name}.txt`;
+
+    return texts[filePath]?.pop() ?? '';
+  }
+})();
 
 export default class extends Controller {
   static targets = ['template', 'output'];
-  static values = { length: Number };
+  static values = { length: Number, type: String };
 
   connect() {
     console.log('Connected', this.lengthValue);
@@ -10,7 +27,11 @@ export default class extends Controller {
 
   add() {
     const base = this.templateTarget.innerHTML;
-    const html = base.replaceAll('$TEMPLATE$', this.lengthValue);
+    const word = getText(this.typeValue);
+    const html = base
+      .replaceAll('$TEMPLATE$', this.lengthValue)
+      .replaceAll('$VALUE$', word);
+
     const fragment = document.createRange().createContextualFragment(html);
 
     this.outputTarget.appendChild(fragment);
@@ -46,6 +67,7 @@ export default class extends Controller {
 
     if (last) {
       last.focus();
+      last.selectionStart = last.selectionEnd = last.value.length;
     }
   }
 }
