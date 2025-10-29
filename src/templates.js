@@ -1,5 +1,3 @@
-import { escape } from "vjs";
-
 const templates = import.meta.glob('../views/**/*.vjs', {
   eager: true,
   import: 'default',
@@ -13,13 +11,7 @@ for (const path in templates) {
     .replace('../views/', '')
     .replace('.vjs', '');
 
-  renderer[name] = async (params, content) => {
-    let output = '';
-
-    template(params, (str) => { output += str }, escape, content);
-
-    return output;
-  };
+  renderer[name] = template;
 }
 
 export const render = (name, params = {}, content) => {

@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import vjsPlugin from "./plugins/vjs.js";
-import vitePluginRequire from "vite-plugin-require";
 
 export default defineConfig({
   base: '/hat-game/',
@@ -14,6 +13,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     vjsPlugin(),
-    vitePluginRequire.default(),
   ],
 });
