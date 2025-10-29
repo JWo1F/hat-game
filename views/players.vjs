@@ -3,10 +3,10 @@
         <h1 class="text-4xl font-bold"><%= $.team.name %></h1>
         <div class="flex gap-2">
             <button class="p-4 block" type="button" data-action="vfield#add">
-                <img src="images/plus.svg" alt="Add" width="24" height="24">
+                <img src="<%= vite_asset_src('../assets/images/plus.svg') %>" alt="Add" width="24" height="24">
             </button>
             <button class="p-4 block" type="button" data-action="vfield#remove">
-                <img src="images/minus.svg" alt="Remove" width="24" height="24">
+                <img src="<%= vite_asset_src('../assets/images/minus.svg') %>" alt="Remove" width="24" height="24">
             </button>
         </div>
     </header>
@@ -29,7 +29,7 @@
 
     <footer class="flex-none p-8 text-center sticky bottom-0 bg-white border-t">
         <button type="submit">
-            <img src="images/next.svg" alt="Next" width="100" height="100" class="hover:scale-105 transition-transform">
+            <img src="<%= vite_asset_src('../assets/images/next.svg') %>" alt="Next" width="100" height="100" class="hover:scale-105 transition-transform">
         </button>
     </footer>
 </form>

@@ -2,7 +2,7 @@
     <form method="post" action="/settings">
         <div class="flex items-center gap-4 mb-8">
             <a href="/">
-                <img src="images/back.svg" alt="Home" width="32" height="32">
+                <img src="<%= vite_asset_src('../assets/images/back.svg') %>" alt="Home" width="32" height="32">
             </a>
             <h1 class="text-3xl font-bold">Настройки игры</h1>
         </div>

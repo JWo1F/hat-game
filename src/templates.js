@@ -1,17 +1,23 @@
-import {Vjs} from "vjs";
+import $escape from 'html-escape';
 
-const templates = import.meta.glob('../views/**/*.vjs', { as: 'raw', eager: true });
-const vjs = new Vjs();
-
+const templates = import.meta.glob('../views/**/*.vjs', { eager: true });
 const renderer = {};
 
 for (const path in templates) {
-  const templateText = templates[path];
-  const compiled = await vjs.compile(templateText);
-  const name = path.replace('../views/', '').replace('.vjs', '');
+  const template = templates[path];
+  const name = path
+    .replace('../views/', '')
+    .replace('.vjs', '');
 
   renderer[name] = async (params, content) => {
-    return await vjs.render(compiled, params, content);
+    let output = '';
+
+    const append = (str) => output += str;
+    const escape = (str) => append($escape(str));
+
+    template.default(params, append, escape, content);
+
+    return output;
   };
 }
 

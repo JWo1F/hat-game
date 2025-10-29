@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.15",
     "date-fns": "^4.1.0",
     "fast-shuffle": "^6.1.1",
+    "html-escape": "^2.0.0",
     "stimulus-vite-helpers": "^3.1.0",
     "tailwindcss": "^4.1.15",
     "vite": "^7.1.11",

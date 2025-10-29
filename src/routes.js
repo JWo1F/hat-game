@@ -66,7 +66,6 @@ routes.addRoute('settings', ({ method, body }) => {
 });
 
 routes.addRoute('players', ({ method, body }) => {
-  console.log(state.teamIndex);
   const team = settings.teams[state.teamIndex];
 
   if (method === 'POST') {
@@ -74,8 +73,6 @@ routes.addRoute('players', ({ method, body }) => {
     settings.save();
 
     state.teamIndex += 1;
-
-    console.log(state.teamIndex, settings.teams.length);
 
     if (state.teamIndex >= settings.teams.length) {
       return routes.redirect('start');

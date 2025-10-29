@@ -1,13 +1,13 @@
 <div class="p-8 flex flex-col h-lvh">
     <a href="/settings" class="absolute top-4 right-4 hover:scale-105 transition-transform">
-        <img src="images/settings.svg" alt="Settings" width="50" height="50">
+        <img src="<%= vite_asset_src('../assets/images/settings.svg') %>" alt="Settings" width="50" height="50">
     </a>
 
     <div class="text-center my-auto">
-        <img src="images/hat.svg" alt="" width="300" height="300" class="inline-block">
+        <img src="<%= vite_asset_src('../assets/images/hat.svg') %>" alt="" width="300" height="300" class="inline-block">
     </div>
 
     <a href="/teams" class="block">
-        <img src="images/play.svg" alt="Play" width="100" height="100" class="block mx-auto my-4 hover:scale-105 transition-transform">
+        <img src="<%= vite_asset_src('../assets/images/play.svg') %>" alt="Play" width="100" height="100" class="block mx-auto my-4 hover:scale-105 transition-transform">
     </a>
 </div>
