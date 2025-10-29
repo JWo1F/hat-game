@@ -1,10 +1,10 @@
-const categories = await import.meta.glob('../texts/categories/*.txt', { as: 'raw', eager: true });
+const categories = await import.meta.glob('../assets/texts/categories/*.txt', { as: 'raw', eager: true });
 
 export function getWordsByCategories(selectedCategories, count) {
   const output = [];
 
   const allWords = selectedCategories.flatMap(category => {
-    const filePath = `../categories/${category}.txt`;
+    const filePath = `../assets/texts/categories/${category}.txt`;
     const fileContent = categories[filePath];
 
     return fileContent.split('\n').map(word => word.trim()).filter(word => word.length > 0);

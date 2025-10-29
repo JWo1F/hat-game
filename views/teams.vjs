@@ -14,7 +14,7 @@
     <div class="flex-1">
         <% const field = (name, index) => { %>
             <div data-vfield-index="<%= index %>">
-                <input type="text" name="team" value="<%= name %>" class="block w-full p-4 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" autofocus />
+                <input type="text" name="team" value="<%= name %>" class="input block" autofocus />
             </div>
         <% } %>
 
@@ -22,7 +22,7 @@
             <% field('$VALUE$', '$TEMPLATE$') %>
         </template>
 
-        <div class="p-8" data-vfield-target="output">
+        <div class="p-8 space-y-4" data-vfield-target="output">
             <% $.settings.teams?.forEach((team, index) => field(team.name, index)) %>
         </div>
     </div>
