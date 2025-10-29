@@ -1,9 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 import { shuffle } from "fast-shuffle";
 
-const getText = (() => {
-  const texts = import.meta.glob('../../assets/texts/*.txt', { as: 'raw', eager: true });
+const texts = import.meta.glob('../../assets/texts/*.txt', {
+  query: '?raw',
+  eager: true,
+  import: 'default',
+});
 
+const getText = (() => {
   for (const key in texts) {
     texts[key] = shuffle(texts[key].split('\n'))
       .map(line => line.trim())

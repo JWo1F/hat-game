@@ -5,7 +5,7 @@
             Вопрос <span data-game-target="num"></span> из <span data-game-target="total"></span>
         </div>
         <div class="flex gap-2 justify-center">
-            <img src="<%= vite_asset_src('../assets/images/time.svg') %>" width="16" height="16">
+            <img src="<%= require('../assets/images/time.svg') %>" width="16" height="16">
             <span data-controller="timer" data-timer-end-time-value="<%= $.game.endTime * 1 %>"></span>
         </div>
     </div>
@@ -18,10 +18,10 @@
 
     <div class="flex-none p-8 flex gap-4 justify-around text-lg text-white text-bold">
         <button data-action="game#fail">
-            <img src="<%= vite_asset_src('../assets/images/fail.svg') %>" alt="Fail" class="aspect-square h-32">
+            <img src="<%= require('../assets/images/fail.svg') %>" alt="Fail" class="aspect-square h-32">
         </button>
         <button data-action="game#success">
-            <img src="<%= vite_asset_src('../assets/images/success.svg') %>" alt="Success" class="aspect-square h-32">
+            <img src="<%= require('../assets/images/success.svg') %>" alt="Success" class="aspect-square h-32">
         </button>
     </div>
 </div>

@@ -1,4 +1,8 @@
-const categories = await import.meta.glob('../assets/texts/categories/*.txt', { as: 'raw', eager: true });
+const categories = await import.meta.glob('../assets/texts/categories/*.txt', {
+  query: '?raw',
+  eager: true,
+  import: 'default',
+});
 
 export function getWordsByCategories(selectedCategories, count) {
   const output = [];
