@@ -1,5 +1,5 @@
 <form action="/players" method="POST" class="w-screen h-screen flex flex-col" data-controller="vfield" data-vfield-length-value="<%= $.team.players.length %>" data-vfield-type-value="players">
-    <header class="flex-none flex items-center justify-between p-8">
+    <header class="flex-none flex items-center justify-between p-8 sticky top-0 bg-white z-10 border-b">
         <h1 class="text-4xl font-bold"><%= $.team.name %></h1>
         <div class="flex gap-2">
             <button class="p-4 block" type="button" data-action="vfield#add">
@@ -27,9 +27,9 @@
         </div>
     </div>
 
-    <div class="flex-none p-8 text-center">
+    <footer class="flex-none p-8 text-center sticky bottom-0 bg-white border-t">
         <button type="submit">
             <img src="images/next.svg" alt="Next" width="100" height="100" class="hover:scale-105 transition-transform">
         </button>
-    </div>
+    </footer>
 </form>

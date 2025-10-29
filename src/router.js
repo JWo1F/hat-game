@@ -48,7 +48,6 @@ export class Router {
 
   async visit(path, options) {
     const handler = this.routes.get(path);
-    console.log(handler);
     const content = await handler(options);
 
     if (content.type === 'redirect') {

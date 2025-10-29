@@ -10,10 +10,14 @@ const getText = (() => {
       .filter(line => line.length > 0);
   }
 
-  return (name) => {
+  return (name, used) => {
     const filePath = `../../assets/texts/${name}.txt`;
+    const list = texts[filePath] ?? [];
+    let word;
 
-    return texts[filePath]?.pop() ?? '';
+    do { word = list.pop() } while (used.includes(word) && list.length > 0);
+
+    return word;
   }
 })();
 
@@ -21,18 +25,17 @@ export default class extends Controller {
   static targets = ['template', 'output'];
   static values = { length: Number, type: String };
 
-  connect() {
-    console.log('Connected', this.lengthValue);
-  }
-
   add() {
+    const used = Array.from(this.outputTarget.querySelectorAll(`input`)).map(el => el.value);
     const base = this.templateTarget.innerHTML;
-    const word = getText(this.typeValue);
+    const word = getText(this.typeValue, used);
     const html = base
       .replaceAll('$TEMPLATE$', this.lengthValue)
       .replaceAll('$VALUE$', word);
 
-    const fragment = document.createRange().createContextualFragment(html);
+    const fragment = document
+      .createRange()
+      .createContextualFragment(html);
 
     this.outputTarget.appendChild(fragment);
     this.lengthValue += 1;
@@ -68,6 +71,7 @@ export default class extends Controller {
     if (last) {
       last.focus();
       last.selectionStart = last.selectionEnd = last.value.length;
+      last.scrollIntoView();
     }
   }
 }
