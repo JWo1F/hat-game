@@ -14,6 +14,10 @@
             <label class="block mb-2 font-bold" for="timePerRound">Время на раунд (в секундах):</label>
             <input class="w-full p-2 border rounded" type="number" id="timePerRound" name="timePerRound" value="<%= $.settings.timePerRound %>" min="10" required>
         </div>
+        <div class="mb-4">
+            <label class="block mb-2 font-bold" for="timePerRound">Количество слов:</label>
+            <input class="w-full p-2 border rounded" type="number" id="wordsCount" name="wordsCount" value="<%= $.settings.wordsCount %>" min="0" required>
+        </div>
         <button class="btn" type="submit">Сохранить настройки</button>
     </form>
 </div>

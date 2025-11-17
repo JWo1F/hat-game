@@ -57,6 +57,7 @@ routes.addRoute('update', () => {
 routes.addRoute('settings', ({ method, body }) => {
   if (method === 'POST') {
     settings.timePerRound = parseInt(body.get('timePerRound'), 10);
+    settings.wordsCount = parseInt(body.get('wordsCount'), 10);
     settings.rounds = parseInt(body.get('rounds'), 10);
     settings.save();
     return routes.redirect('');
@@ -94,7 +95,7 @@ routes.addRoute('start', () => {
     return new Team(name, players.map(playerName => new Player(playerName)));
   });
 
-  const words = getWordsByCategories(['general'], 10);
+  const words = getWordsByCategories(['general'], settings.wordsCount);
   state.game = new Game(words, teams, settings.timePerRound * 1000, settings.rounds);
 
   return render('round', { game: state.game });

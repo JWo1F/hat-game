@@ -1,4 +1,6 @@
 class Store extends EventTarget {
+  static version = 1;
+
   constructor(prefix) {
     super();
 
@@ -6,10 +8,12 @@ class Store extends EventTarget {
 
     let current = localStorage.getItem(this.#name);
 
-    if (!current) {
+    if (!current || JSON.parse(current)?._version !== this.constructor.version) {
       const defaultValue = JSON.stringify({
+        _version: this.constructor.version,
         timePerRound: 60,
-        rounds: 3
+        rounds: 3,
+        wordsCount: 25,
       });
 
       localStorage.setItem(this.#name, defaultValue);
